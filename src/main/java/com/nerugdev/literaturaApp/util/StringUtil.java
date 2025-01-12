@@ -1,13 +1,9 @@
 package com.nerugdev.literaturaApp.util;
 
-public class StringUtil {
+import java.text.Normalizer;
 
-    public static String normalize(String text) {
-        return text
-                .replace("á", "a")
-                .replace("é", "e")
-                .replace("í", "i")
-                .replace("ó", "o")
-                .replace("ú", "u");
+public class StringUtil {
+    public static String normalizar(String texto) {
+        return Normalizer.normalize(texto, Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
     }
 }
