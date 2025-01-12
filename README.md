@@ -4,6 +4,32 @@ LiteraturaApp 📚✨
 🌱 En Construcción 🌱
 La obra maestra que estás a punto de descubrir está actualmente en construcción. Mientras nuestros desarrolladores afilan sus plumas y ensamblan cada palabra, te invitamos a quedarte con nosotros y ver cómo esta biblioteca digital toma forma. 📖🏗️
 
+Estructura del Proyecto
+
+com/nerugdev/literaturaApp
+│
+├── controller
+│   ├── LibroController.java
+│   └── AutorController.java
+│
+├── service
+│   ├── LibroService.java
+│   ├── AutorService.java
+│   └── GutendexAPIService.java
+│
+├── repository
+│   ├── LibroRepository.java
+│   └── AutorRepository.java
+│
+├── model
+│   ├── Libro.java
+│   ├── Autor.java
+│   ├── LibroDTO.java
+│   └── AutorDTO.java
+│
+└── util
+    └── StringUtil.java
+
 ¡Mantente al tanto! Aquí puedes seguir cada capítulo del desarrollo, enterarte de las últimas actualizaciones y participar con tus sugerencias. 🛠️💬
 
 🔍 ¿Qué Puedes Esperar? 🔍
