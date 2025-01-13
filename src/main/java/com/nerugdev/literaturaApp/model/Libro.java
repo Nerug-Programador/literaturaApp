@@ -18,11 +18,11 @@ public class Libro {
 
     public Libro() {}
 
-    public Libro(LibroDTO libroDTO) {
+    public Libro(LibroDTO libroDTO, Autor autor) {
         this.titulo = libroDTO.getTitulo();
         this.idioma = libroDTO.getIdioma();
         this.numeroDescargas = libroDTO.getNumeroDescargas();
-        // Aquí deberías asignar el autor basado en el DTO del autor
+        this.autor = autor;
     }
 
     // Getters y Setters

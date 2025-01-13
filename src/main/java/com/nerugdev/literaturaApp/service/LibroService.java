@@ -27,4 +27,8 @@ public class LibroService {
     public void guardar(Libro libro) {
         libroRepository.save(libro);
     }
+
+    public Libro obtenerPorTitulo(String titulo) {
+        return libroRepository.findByTitulo(titulo);
+    }
 }

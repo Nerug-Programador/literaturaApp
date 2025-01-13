@@ -13,10 +13,19 @@ public class AutorService {
     private AutorRepository autorRepository;
 
     public List<Autor> obtenerTodos() {
-        return autorRepository.findAll();
+        return autorRepository.findAllWithLibros();
     }
 
     public List<Autor> obtenerAutoresVivosEnAno(int ano) {
-        return autorRepository.findByFechaFallecimientoIsNullOrFechaFallecimientoGreaterThan(ano);
+        return autorRepository.findByFechaFallecimientoIsNullOrFechaFallecimientoGreaterThanAndFechaNacimientoLessThanEqualWithLibros(ano);
     }
+
+    public Autor obtenerPorNombreYApellido(String nombre, String apellido) {
+        return autorRepository.findByNombreAndApellido(nombre, apellido);
+    }
+
+    public void guardar(Autor autor) {
+        autorRepository.save(autor);
+    }
+
 }

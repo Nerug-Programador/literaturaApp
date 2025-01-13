@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import com.nerugdev.literaturaApp.controller.AutorController;
 import com.nerugdev.literaturaApp.controller.LibroController;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @Component
@@ -19,45 +21,50 @@ public class Menu implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        int opcion;
-        do {
+        int opcion = -1;
+        while (opcion != 0) {
             mostrarMenu();
-            opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea
-            switch (opcion) {
-                case 1:
-                    System.out.print("Ingrese el título del libro: ");
-                    String titulo = scanner.nextLine();
-                    libroController.buscarLibroPorTitulo(titulo);
-                    break;
-                case 2:
-                    libroController.listarLibrosRegistrados();
-                    break;
-                case 3:
-                    autorController.listarAutoresRegistrados();
-                    break;
-                case 4:
-                    System.out.print("Ingrese el año: ");
-                    int ano = scanner.nextInt();
-                    autorController.listarAutoresVivosEnAno(ano);
-                    break;
-                case 5:
-                    System.out.println("Seleccione un idioma:");
-                    System.out.println("es - español");
-                    System.out.println("en - inglés");
-                    System.out.println("fr - francés");
-                    System.out.println("pt - portugués");
-                    String idioma = scanner.next();
-                    libroController.listarLibrosPorIdioma(idioma);
-                    break;
-                case 0:
-                    System.out.println("Saliendo de la aplicación...");
-                    break;
-                default:
-                    System.out.println("Opción no válida.");
-                    break;
+            try {
+                opcion = scanner.nextInt();
+                scanner.nextLine(); // Consumir la nueva línea
+                switch (opcion) {
+                    case 1:
+                        System.out.print("Ingrese el título del libro: ");
+                        String titulo = scanner.nextLine();
+                        libroController.buscarLibroPorTitulo(titulo);
+                        break;
+                    case 2:
+                        libroController.listarLibrosRegistrados();
+                        break;
+                    case 3:
+                        autorController.listarAutoresRegistrados();
+                        break;
+                    case 4:
+                        System.out.print("Ingrese el año: ");
+                        int ano = scanner.nextInt();
+                        autorController.listarAutoresVivosEnAno(ano);
+                        break;
+                    case 5:
+                        System.out.println("Seleccione un idioma:");
+                        System.out.println("es - español");
+                        System.out.println("en - inglés");
+                        System.out.println("fr - francés");
+                        System.out.println("pt - portugués");
+                        String idioma = scanner.next();
+                        libroController.listarLibrosPorIdioma(idioma);
+                        break;
+                    case 0:
+                        System.out.println("Saliendo de la aplicación...");
+                        break;
+                    default:
+                        System.out.println("Opción no válida.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Por favor, ingrese un número correspondiente a una opción del menú.");
+                scanner.nextLine(); // Consumir la entrada inválida
             }
-        } while (opcion != 0);
+        }
         scanner.close();
     }
 
